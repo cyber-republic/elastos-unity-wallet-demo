@@ -1,9 +1,5 @@
 rootProject.name = 'RNMainchainDemo'
 include ':react-native-elastos-wallet-core'
 project(':react-native-elastos-wallet-core').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-elastos-wallet-core/android')
-include ':react-native-elastos-mainchain'
-project(':react-native-elastos-mainchain').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-elastos-mainchain/android')
-include ':react-native-mainchain-plugin'
-project(':react-native-mainchain-plugin').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-mainchain-plugin/android')
 
 include ':app'

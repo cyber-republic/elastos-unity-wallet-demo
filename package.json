@@ -9,7 +9,7 @@
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-native-elastos-wallet-core": "1.0.4"
+    "react-native-elastos-wallet-core": "1.0.5"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
