@@ -20,13 +20,6 @@ $ react-native run-ios
 $ git clone https://github.com/cyber-republic/react-native-elastos-wallet-core-demo
 $ cd react-native-elastos-wallet-core-demo
 $ npm i
-```
-
-Open android folder using Android Studio and add `node_modules/react-native-elastos-wallet-core/android/libs/lib.aar` to the project using following link
-http://docs.onemobilesdk.aol.com/android-ad-sdk/adding-aar-files.html
-
-To run the app
-```
 $ react-native run-android
 ```
 
