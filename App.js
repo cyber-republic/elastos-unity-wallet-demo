@@ -21,9 +21,10 @@ type Props = {};
 export default class App extends Component<Props> {
 
     state={
-        menmonic: "",
+        menmonic:"",
         pk:"",
-        sk:""
+        sk:"",
+        balance:""
     }
 
 
@@ -43,6 +44,30 @@ export default class App extends Component<Props> {
         RNElastosMainchain.getSinglePrivateKey( (err, res) => {
             this.setState({sk: res})
         });
+    }
+
+    // getBalance connects to testnet and retrieve wallet's balance
+    getBalance = () => {
+        // connect to testnet
+        fetch('http://localhost:21336', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                // method name according to https://github.com/elastos/Elastos.ELA/blob/master/docs/jsonrpc_apis.md
+                method: "getreceivedbyaddress",
+                // additional optional parameters
+                params: {address:"EcEovWPMEcGf5GV1HVEon7VY7hrogcBu8d"}
+            })
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(responseJson)
+            this.setState({balance: responseJson.result})
+        }).catch((error) => { console.error(error); });
+
     }
 
 
@@ -72,6 +97,14 @@ export default class App extends Component<Props> {
              <View></View>
              :
              <View style={{padding:20}}><Text>{this.state.sk}</Text></View>
+         }
+
+         <Button title="Get wallet balance" onPress={this.getBalance} />
+
+         { this.state.balance == "" ?
+             <View></View>
+             :
+             <View style={{padding:20}}><Text>{this.state.balance}</Text></View>
          }
 
       </View>
