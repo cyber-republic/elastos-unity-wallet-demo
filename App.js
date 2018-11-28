@@ -35,7 +35,9 @@ export default class App extends Component<Props> {
     }
 
     getBalance = () => {
-
+      RNElastosMainchain.getBalance( (err, res) => {
+          this.setState({balance: res})
+      });
     }
 
 
