@@ -34,40 +34,10 @@ export default class App extends Component<Props> {
         });
     }
 
-    getSinglePublicKey = () => {
-        RNElastosMainchain.getSinglePublicKey( (err, res) => {
-            this.setState({pk: res})
-        });
-    }
-
-    getSinglePrivateKey = () => {
-        RNElastosMainchain.getSinglePrivateKey( (err, res) => {
-            this.setState({sk: res})
-        });
-    }
-
-    // getBalance connects to testnet and retrieve wallet's balance
     getBalance = () => {
-        // connect to testnet
-        fetch('http://localhost:21336', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                // method name according to https://github.com/elastos/Elastos.ELA/blob/master/docs/jsonrpc_apis.md
-                method: "getreceivedbyaddress",
-                // additional optional parameters
-                params: {address:"EcEovWPMEcGf5GV1HVEon7VY7hrogcBu8d"}
-            })
-        })
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson)
-            this.setState({balance: responseJson.result})
-        }).catch((error) => { console.error(error); });
-
+      RNElastosMainchain.getBalance( (err, res) => {
+          this.setState({balance: res})
+      });
     }
 
 
@@ -81,22 +51,6 @@ export default class App extends Component<Props> {
              <View></View>
              :
              <View style={{padding:20}}><Text>{this.state.mnemonic}</Text></View>
-         }
-
-         <Button title="Get Public Key" onPress={this.getSinglePublicKey} />
-
-         { this.state.pk == "" ?
-             <View></View>
-             :
-             <View style={{padding:20}}><Text>{this.state.pk}</Text></View>
-         }
-
-         <Button title="Get Private Key" onPress={this.getSinglePrivateKey} />
-
-         { this.state.sk == "" ?
-             <View></View>
-             :
-             <View style={{padding:20}}><Text>{this.state.sk}</Text></View>
          }
 
          <Button title="Get wallet balance" onPress={this.getBalance} />
