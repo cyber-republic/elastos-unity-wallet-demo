@@ -1,5 +1,5 @@
 rootProject.name = 'RNMainchainDemo'
-include ':react-native-elastos-wallet-core', ':libs'
+include ':react-native-elastos-wallet-core', ':ElastosWallet'
 project(':react-native-elastos-wallet-core').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-elastos-wallet-core/android')
 
 include ':app'
