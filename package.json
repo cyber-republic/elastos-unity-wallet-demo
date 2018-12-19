@@ -9,7 +9,9 @@
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-native-elastos-wallet-core": "1.0.5"
+    "react-native-elastos-wallet-core": "1.0.5",
+    "react-native-gesture-handler": "^1.0.12",
+    "react-navigation": "^3.0.8"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
