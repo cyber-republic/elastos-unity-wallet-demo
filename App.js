@@ -29,7 +29,7 @@ export default class App extends Component<Props> {
 
 
     generateMnemonic = () => {
-        RNElastosMainchain.generateMnemonic( (err, res) => {
+        RNElastosMainchain.createWallet( (err, res) => {
             this.setState({mnemonic: res})
         });
     }
@@ -45,22 +45,13 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
 
-         <Button title="Generate Mnemonic" onPress={this.generateMnemonic} />
+         <Button title="Create Wallet" onPress={this.generateMnemonic} />
 
          { this.state.mnemonic == "" ?
              <View></View>
              :
              <View style={{padding:20}}><Text>{this.state.mnemonic}</Text></View>
          }
-
-         <Button title="Get wallet balance" onPress={this.getBalance} />
-
-         { this.state.balance == "" ?
-             <View></View>
-             :
-             <View style={{padding:20}}><Text>{this.state.balance}</Text></View>
-         }
-
       </View>
     );
   }

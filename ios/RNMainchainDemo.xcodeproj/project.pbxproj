@@ -37,6 +37,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* RNMainchainDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNMainchainDemoTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5E45EA908DF14164A7F20F1C /* libRNElastosMainchain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A04469556D4B578ADEBF3D /* libRNElastosMainchain.a */; };
+		6974DF3A21CA4B4F000A43B2 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 6974DF1321CA4B4F000A43B2 /* Data */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 /* End PBXBuildFile section */
@@ -348,6 +349,7 @@
 		2D02E4901E0B4A5D006451C7 /* RNMainchainDemo-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNMainchainDemo-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		6974DF1321CA4B4F000A43B2 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = "../node_modules/react-native-elastos-wallet-core/Elastos.ELA.SPV.Cpp/Data"; sourceTree = "<group>"; };
 		69A202532195849300BABCC8 /* libElastos.Wallet.Utility.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libElastos.Wallet.Utility.dylib; path = "../node_modules/react-native-elastos-mainchain/Elastos.ORG.Wallet.Lib.C/build/ios/src/libElastos.Wallet.Utility.dylib"; sourceTree = "<group>"; };
 		69F68101219C2C9A0025F5D8 /* RNElastosMainchain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNElastosMainchain.xcodeproj; path = "../node_modules/react-native-elastos-wallet-core/ios/RNElastosMainchain.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 		13B07FAE1A68108700A75B9A /* RNMainchainDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6974DF1321CA4B4F000A43B2 /* Data */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1096,6 +1099,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				6974DF3A21CA4B4F000A43B2 /* Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,6 +1282,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = YU3GP553RA;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-mainchain-wallet-core/ios",
@@ -1305,6 +1310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YU3GP553RA;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-mainchain-wallet-core/ios",
