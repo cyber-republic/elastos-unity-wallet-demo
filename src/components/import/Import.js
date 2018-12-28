@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Button,View,TextInput,Text
 } from 'react-native';
+import RNElastosMainchain from 'react-native-elastos-wallet-core';
 import styles from '../import/Style';
 
 class Import extends Component {
@@ -10,7 +11,7 @@ class Import extends Component {
       super(props);
       console.log('Import : constructor');
       this.state = {
-        seed : ''
+        seedText : ''
       }
     }
   
@@ -25,6 +26,8 @@ class Import extends Component {
     importClicked = () => {
       console.log('Import : importClicked');
       const { navigation } = this.props;
+      RNElastosMainchain.importWalletWithMnemonic(this.state.seedText , (err, res) => {
+      });
       navigation.navigate('Balance');
     }
   
@@ -43,7 +46,7 @@ class Import extends Component {
             placeholder="Seed" 
             multiline
             maxLength={120}
-            onChangeText={text => this.setState({ seed: text })} >
+            onChangeText={text => this.setState({ seedText: text })} >
           </TextInput>
 
           <Button
