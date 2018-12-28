@@ -10,43 +10,44 @@ class Balance extends Component {
       super(props);
       console.log('Balance : constructor');
       this.state = {
-        data : [
-            {
-              id : 1,
-              transaction_name : "trans 1",
-              amout : "1",
-              date : "10,10,10",
-              destination : "from"
-            },
-            {
-              id : 2,
-              transaction_name : "trans 2",
-              amout : "2",
-              date : "10,10,10",
-              destination : "from"
-            },
-            {
-              id : 3,
-              transaction_name : "trans 3",
-              amout : "3",
-              date : "10,10,10",
-              destination : "from"
-            },
-            {
-              id : 4,
-              transaction_name : "trans 4",
-              amout : "4",
-              date : "10,10,10",
-              destination : "from"
-            },
-            {
-              id : 5,
-              transaction_name : "trans 5",
-              amout : "5",
-              date : "10,10,10",
-              destination : "from"
-            },
-        ],
+        data : JSON.parse(this.props.navigation.state.params.txlist),
+        // data : [
+        //     {
+        //       id : 1,
+        //       transaction_name : "trans 1",
+        //       amout : "1",
+        //       date : "10,10,10",
+        //       destination : "from"
+        //     },
+        //     {
+        //       id : 2,
+        //       transaction_name : "trans 2",
+        //       amout : "2",
+        //       date : "10,10,10",
+        //       destination : "from"
+        //     },
+        //     {
+        //       id : 3,
+        //       transaction_name : "trans 3",
+        //       amout : "3",
+        //       date : "10,10,10",
+        //       destination : "from"
+        //     },
+        //     {
+        //       id : 4,
+        //       transaction_name : "trans 4",
+        //       amout : "4",
+        //       date : "10,10,10",
+        //       destination : "from"
+        //     },
+        //     {
+        //       id : 5,
+        //       transaction_name : "trans 5",
+        //       amout : "5",
+        //       date : "10,10,10",
+        //       destination : "from"
+        //     },
+        // ],
         address : '',
         amount : ''
       }
@@ -65,16 +66,18 @@ class Balance extends Component {
 
     }
 
-    keyExtractor = (item, index) => item.id.toString();
+    // keyExtractor = (item, index) => item.id.toString();
   
     render() {
       const { address , amount , data} = this.state;
+      const balance = this.props.navigation.getParam('balance', '0');
 
       return (
         <View style={styles.container}>
-            <Text style={styles.elaAmout}>10 ELA</Text>
-            <Text style={styles.elaPublicAddress}>"Public Address"</Text>
-            
+            <Text style={styles.elaAmout}>{balance} ELA</Text>
+            <Text style={styles.elaPublicAddress}>{this.props.navigation.state.params.publicAddress}</Text>
+            {/* <Text>{this.props.navigation.state.params.txlist}</Text> */}
+
             <FlatList
               style={styles.list}
               bounces={false}
@@ -83,10 +86,10 @@ class Balance extends Component {
               renderItem={({ item }) => (
                 <View style={styles.item}>
                   <Text>
-                    {item.transaction_name}
+                    {item.Summary.TxHash}
                   </Text>
                   <Text>
-                    Sent {item.amout} ELA {item.date} to Me
+                    
                     </Text>
                 </View>
               )}

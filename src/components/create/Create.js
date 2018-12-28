@@ -26,7 +26,7 @@ class Create extends Component {
     submitClicked = () => {
       console.log('Create : createClicked');
       const { navigation } = this.props;
-      navigation.navigate('Balance');
+      navigation.navigate('Balance', {"publicAddress": this.props.navigation.state.params.publicAddress});
     }
   
     render() {
