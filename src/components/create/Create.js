@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Button,View, Text
 } from 'react-native';
+import RNElastosMainchain from 'react-native-elastos-wallet-core';
 import styles from '../create/Style';
 
 class Create extends Component {
@@ -10,12 +11,15 @@ class Create extends Component {
       super(props);
       console.log('Create : constructor');
       this.state = {
-        seedText: 'lion cloud dragon kid easily cloth sail eject thumb town odor diamond month'
+        seedText: ''
       };
     }
   
     componentDidMount() {
       console.log('Create : componentDidMount');
+      RNElastosMainchain.generateMnemonic( (err, res) => {
+        this.setState({seedText: res})
+      });
     }
   
     componentWillUnmount() {
@@ -25,6 +29,8 @@ class Create extends Component {
     submitClicked = () => {
       console.log('Create : createClicked');
       const { navigation } = this.props;
+      RNElastosMainchain.createWallet(this.state.seedText , (err, res) => {
+      });
       navigation.navigate('Balance');
     }
   
