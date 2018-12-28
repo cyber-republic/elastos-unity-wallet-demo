@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Button,View,Text,FlatList,TextInput
+    Button,View,Text,FlatList,TextInput,Platform
 } from 'react-native';
+import RNElastosMainchain from 'react-native-elastos-wallet-core';
 import styles from '../balance/Style';
 
 class Balance extends Component {
@@ -10,51 +11,57 @@ class Balance extends Component {
       super(props);
       console.log('Balance : constructor');
       this.state = {
-        data : JSON.parse(this.props.navigation.state.params.txlist),
-        // data : [
-        //     {
-        //       id : 1,
-        //       transaction_name : "trans 1",
-        //       amout : "1",
-        //       date : "10,10,10",
-        //       destination : "from"
-        //     },
-        //     {
-        //       id : 2,
-        //       transaction_name : "trans 2",
-        //       amout : "2",
-        //       date : "10,10,10",
-        //       destination : "from"
-        //     },
-        //     {
-        //       id : 3,
-        //       transaction_name : "trans 3",
-        //       amout : "3",
-        //       date : "10,10,10",
-        //       destination : "from"
-        //     },
-        //     {
-        //       id : 4,
-        //       transaction_name : "trans 4",
-        //       amout : "4",
-        //       date : "10,10,10",
-        //       destination : "from"
-        //     },
-        //     {
-        //       id : 5,
-        //       transaction_name : "trans 5",
-        //       amout : "5",
-        //       date : "10,10,10",
-        //       destination : "from"
-        //     },
-        // ],
+        data : [],
         address : '',
-        amount : ''
+        amount : '',
+        balance : '',
+        publicAddress : ''
       }
     }
   
     componentDidMount() {
       console.log('Balance : componentDidMount');
+
+      if (Platform.OS == 'ios'){
+        this.setState({balance:parseFloat(this.props.navigation.state.params.balance / 100000000).toFixed(2), publicAddress: this.props.navigation.state.params.publicAddress, data : JSON.parse(this.props.navigation.state.params.txlist)})
+      }
+
+      else {
+        RNElastosMainchain.getBalance( (err, res) => {
+          this.setState({balance: res})
+        });
+        RNElastosMainchain.getPublicAddress( (err, res) => {
+          this.setState({publicAddress: res})
+        });
+        RNElastosMainchain.getTransactionHistory( (err, res) => {
+          var transactionHistory = JSON.parse(res);
+          var transactionData, index = 0;
+          var transactionData = transactionHistory.map(element => {
+            index++;
+            var elementDate = new Date(element.Timestamp * 1000).toUTCString();
+            var elementFlag, elementAmount, elementAddress;
+            if (element.Incoming.Amount != 0) {
+              elementFlag = "Received";
+              elementAmount = element.Incoming.Amount;
+              elementAddress = element.Incoming.ToAddress;
+            } else {
+              elementFlag = "Sent";
+              elementAmount = element.Outcoming.Amount;
+              elementAddress = element.Outcoming.ToAddress;
+            }
+  
+            return {
+                id : index,
+                transaction_id : element.TxHash,
+                amount : elementAmount,
+                date : elementDate,
+                flag : elementFlag,
+                address: elementAddress
+            }
+          });
+          this.setState({data : transactionData});
+        });
+      }
     }
   
     componentWillUnmount() {
@@ -63,7 +70,9 @@ class Balance extends Component {
 
     sendClicked = () => {
       console.log('Balance : sendClicked');
-
+      RNElastosMainchain.sendToAddress(this.state.amount, this.state.address, (err, res) => {
+        alert("Success, your transacionId is" + res)
+      });
     }
 
     // keyExtractor = (item, index) => item.id.toString();
@@ -71,13 +80,11 @@ class Balance extends Component {
     render() {
       const { address , amount , data} = this.state;
       const balance = this.props.navigation.getParam('balance', '0');
-
       return (
         <View style={styles.container}>
-            <Text style={styles.elaAmout}>{balance} ELA</Text>
-            <Text style={styles.elaPublicAddress}>{this.props.navigation.state.params.publicAddress}</Text>
-            {/* <Text>{this.props.navigation.state.params.txlist}</Text> */}
-
+            <Text style={styles.elaAmout}>{this.state.balance} ELA</Text>
+            <Text style={styles.elaPublicAddress}>"{this.state.publicAddress}"</Text>
+            
             <FlatList
               style={styles.list}
               bounces={false}
@@ -85,12 +92,27 @@ class Balance extends Component {
               keyExtractor={this.keyExtractor}
               renderItem={({ item }) => (
                 <View style={styles.item}>
-                  <Text>
-                    {item.Summary.TxHash}
+                  { Platform.OS == 'ios' ?
+                    <View>
+                    <Text>
+                    TxHash: {item.Summary.TxHash}
                   </Text>
                   <Text>
-                    
+                    Amout : {item.Summary.Incoming.Amount}  {'\n'}
+                    To : {item.Summary.Incoming.ToAddress}
                     </Text>
+                    </View>
+                  :
+                  <View>
+                    <Text>
+                    {item.transaction_id}
+                  </Text>
+                  <Text>
+                    {item.flag} {item.amount} {item.date} {item.address}
+                    </Text>
+                    </View>
+                  }
+                  
                 </View>
               )}
             />
