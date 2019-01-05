@@ -11,7 +11,8 @@ class Create extends Component {
       super(props);
       console.log('Create : constructor');
       this.state = {
-        seedText: ''
+        seedText: this.props.navigation.state.params.mnemonic
+        // seedText: 'lion cloud dragon kid easily cloth sail eject thumb town odor diamond month'
       };
     }
   
@@ -29,6 +30,7 @@ class Create extends Component {
     submitClicked = () => {
       console.log('Create : createClicked');
       const { navigation } = this.props;
+      // navigation.navigate('Balance', {"publicAddress": this.props.navigation.state.params.publicAddress});
       RNElastosMainchain.createWallet(this.state.seedText , (err, res) => {
       });
       navigation.navigate('Balance');

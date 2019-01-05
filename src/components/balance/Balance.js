@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Button,View,Text,FlatList,TextInput
+    Button,View,Text,FlatList,TextInput,Platform
 } from 'react-native';
 import RNElastosMainchain from 'react-native-elastos-wallet-core';
 import styles from '../balance/Style';
@@ -21,40 +21,47 @@ class Balance extends Component {
   
     componentDidMount() {
       console.log('Balance : componentDidMount');
-      RNElastosMainchain.getBalance( (err, res) => {
-        this.setState({balance: res})
-      });
-      RNElastosMainchain.getPublicAddress( (err, res) => {
-        this.setState({publicAddress: res})
-      });
-      RNElastosMainchain.getTransactionHistory( (err, res) => {
-        var transactionHistory = JSON.parse(res);
-        var transactionData, index = 0;
-        var transactionData = transactionHistory.map(element => {
-          index++;
-          var elementDate = new Date(element.Timestamp * 1000).toUTCString();
-          var elementFlag, elementAmount, elementAddress;
-          if (element.Incoming.Amount != 0) {
-            elementFlag = "Received";
-            elementAmount = element.Incoming.Amount;
-            elementAddress = element.Incoming.ToAddress;
-          } else {
-            elementFlag = "Sent";
-            elementAmount = element.Outcoming.Amount;
-            elementAddress = element.Outcoming.ToAddress;
-          }
 
-          return {
-              id : index,
-              transaction_id : element.TxHash,
-              amount : elementAmount,
-              date : elementDate,
-              flag : elementFlag,
-              address: elementAddress
-          }
+      if (Platform.OS == 'ios'){
+        this.setState({balance:parseFloat(this.props.navigation.state.params.balance / 100000000).toFixed(2), publicAddress: this.props.navigation.state.params.publicAddress, data : JSON.parse(this.props.navigation.state.params.txlist)})
+      }
+
+      else {
+        RNElastosMainchain.getBalance( (err, res) => {
+          this.setState({balance: res})
         });
-        this.setState({data : transactionData});
-      });
+        RNElastosMainchain.getPublicAddress( (err, res) => {
+          this.setState({publicAddress: res})
+        });
+        RNElastosMainchain.getTransactionHistory( (err, res) => {
+          var transactionHistory = JSON.parse(res);
+          var transactionData, index = 0;
+          var transactionData = transactionHistory.map(element => {
+            index++;
+            var elementDate = new Date(element.Timestamp * 1000).toUTCString();
+            var elementFlag, elementAmount, elementAddress;
+            if (element.Incoming.Amount != 0) {
+              elementFlag = "Received";
+              elementAmount = element.Incoming.Amount;
+              elementAddress = element.Incoming.ToAddress;
+            } else {
+              elementFlag = "Sent";
+              elementAmount = element.Outcoming.Amount;
+              elementAddress = element.Outcoming.ToAddress;
+            }
+  
+            return {
+                id : index,
+                transaction_id : element.TxHash,
+                amount : elementAmount,
+                date : elementDate,
+                flag : elementFlag,
+                address: elementAddress
+            }
+          });
+          this.setState({data : transactionData});
+        });
+      }
     }
   
     componentWillUnmount() {
@@ -68,11 +75,11 @@ class Balance extends Component {
       });
     }
 
-    keyExtractor = (item, index) => item.id.toString();
+    // keyExtractor = (item, index) => item.id.toString();
   
     render() {
       const { address , amount , data} = this.state;
-
+      const balance = this.props.navigation.getParam('balance', '0');
       return (
         <View style={styles.container}>
             <Text style={styles.elaAmout}>{this.state.balance} ELA</Text>
@@ -85,12 +92,27 @@ class Balance extends Component {
               keyExtractor={this.keyExtractor}
               renderItem={({ item }) => (
                 <View style={styles.item}>
+                  { Platform.OS == 'ios' ?
+                    <View>
+                    <Text>
+                    TxHash: {item.Summary.TxHash}
+                  </Text>
                   <Text>
+                    Amout : {item.Summary.Incoming.Amount}  {'\n'}
+                    To : {item.Summary.Incoming.ToAddress}
+                    </Text>
+                    </View>
+                  :
+                  <View>
+                    <Text>
                     {item.transaction_id}
                   </Text>
                   <Text>
                     {item.flag} {item.amount} {item.date} {item.address}
                     </Text>
+                    </View>
+                  }
+                  
                 </View>
               )}
             />

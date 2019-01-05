@@ -35,11 +35,11 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* RNMainchainDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNMainchainDemoTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		5E45EA908DF14164A7F20F1C /* libRNElastosMainchain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A04469556D4B578ADEBF3D /* libRNElastosMainchain.a */; };
-		69A2027C2195851800BABCC8 /* libElastos.Wallet.Utility.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A202532195849300BABCC8 /* libElastos.Wallet.Utility.dylib */; };
+		6934746121CA67A90093FDA9 /* libRNElastosMainchain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F68106219C2C9A0025F5D8 /* libRNElastosMainchain.a */; };
+		6974DF3A21CA4B4F000A43B2 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 6974DF1321CA4B4F000A43B2 /* Data */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		3B4470F2A1634A92B4C06030 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A923E14A2C9A481BB4CFEAB6 /* libRNGestureHandler.a */; };
+		ED29A2D48CA74702899E4EDB /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 291E854123A9483CAF0B31DD /* libRNGestureHandler.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -295,6 +295,13 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		696D7EFE21CE4AAC00239533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B967B5A274884D96AD6A39E1 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
+		};
 		69F68105219C2C9A0025F5D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 69F68101219C2C9A0025F5D8 /* RNElastosMainchain.xcodeproj */;
@@ -345,15 +352,18 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNMainchainDemo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNMainchainDemo/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		291E854123A9483CAF0B31DD /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RNMainchainDemo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RNMainchainDemo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RNMainchainDemo-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNMainchainDemo-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		6974DF1321CA4B4F000A43B2 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = "../node_modules/react-native-elastos-wallet-core/Elastos.ELA.SPV.Cpp/Data"; sourceTree = "<group>"; };
 		69A202532195849300BABCC8 /* libElastos.Wallet.Utility.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libElastos.Wallet.Utility.dylib; path = "../node_modules/react-native-elastos-mainchain/Elastos.ORG.Wallet.Lib.C/build/ios/src/libElastos.Wallet.Utility.dylib"; sourceTree = "<group>"; };
 		69F68101219C2C9A0025F5D8 /* RNElastosMainchain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNElastosMainchain.xcodeproj; path = "../node_modules/react-native-elastos-wallet-core/ios/RNElastosMainchain.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B967B5A274884D96AD6A39E1 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGestureHandler.xcodeproj; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; };
 		D3A04469556D4B578ADEBF3D /* libRNElastosMainchain.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNElastosMainchain.a; sourceTree = "<group>"; };
 		EA532C2BC99F4138BE927EE0 /* libRNMainchainPlugin.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMainchainPlugin.a; sourceTree = "<group>"; };
 		E434338B69D14B7AA997DEC8 /* RNGestureHandler.xcodeproj */ = {isa = PBXFileReference; name = "RNGestureHandler.xcodeproj"; path = "../node_modules/react-native-gesture-handler/ios/RNGestureHandler.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
@@ -373,7 +383,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69A2027C2195851800BABCC8 /* libElastos.Wallet.Utility.dylib in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -386,8 +395,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				5E45EA908DF14164A7F20F1C /* libRNElastosMainchain.a in Frameworks */,
-				3B4470F2A1634A92B4C06030 /* libRNGestureHandler.a in Frameworks */,
+				6934746121CA67A90093FDA9 /* libRNElastosMainchain.a in Frameworks */,
+				ED29A2D48CA74702899E4EDB /* libRNGestureHandler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +508,7 @@
 		13B07FAE1A68108700A75B9A /* RNMainchainDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6974DF1321CA4B4F000A43B2 /* Data */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -556,8 +566,17 @@
 			children = (
 				EA532C2BC99F4138BE927EE0 /* libRNMainchainPlugin.a */,
 				D3A04469556D4B578ADEBF3D /* libRNElastosMainchain.a */,
+				291E854123A9483CAF0B31DD /* libRNGestureHandler.a */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		696D7EFB21CE4AAC00239533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				696D7EFF21CE4AAC00239533 /* libRNGestureHandler.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		69F68102219C2C9A0025F5D8 /* Products */ = {
@@ -593,7 +612,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				E434338B69D14B7AA997DEC8 /* RNGestureHandler.xcodeproj */,
+				B967B5A274884D96AD6A39E1 /* RNGestureHandler.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -730,6 +749,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = YU3GP553RA;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -804,6 +826,10 @@
 				{
 					ProductGroup = 69F68102219C2C9A0025F5D8 /* Products */;
 					ProjectRef = 69F68101219C2C9A0025F5D8 /* RNElastosMainchain.xcodeproj */;
+				},
+				{
+					ProductGroup = 696D7EFB21CE4AAC00239533 /* Products */;
+					ProjectRef = B967B5A274884D96AD6A39E1 /* RNGestureHandler.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1055,6 +1081,13 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		696D7EFF21CE4AAC00239533 /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = 696D7EFE21CE4AAC00239533 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		69F68106219C2C9A0025F5D8 /* libRNElastosMainchain.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1099,6 +1132,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				6974DF3A21CA4B4F000A43B2 /* Data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,7 +1166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1284,6 +1318,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = YU3GP553RA;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-mainchain-wallet-core/ios",
@@ -1294,7 +1330,7 @@
 				);
 				INFOPLIST_FILE = RNMainchainDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-elastos-wallet-core/Elastos.ORG.Wallet.Lib.C/build/ios/src/**";
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1311,6 +1347,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YU3GP553RA;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-mainchain-wallet-core/ios",
@@ -1321,7 +1359,7 @@
 				);
 				INFOPLIST_FILE = RNMainchainDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-elastos-wallet-core/Elastos.ORG.Wallet.Lib.C/build/ios/src/**";
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1533,7 +1571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1579,7 +1617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

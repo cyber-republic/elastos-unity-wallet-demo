@@ -3,6 +3,7 @@ import {
     Button,View
 } from 'react-native';
 import styles from '../start/Style';
+import RNElastosMainchain from 'react-native-elastos-wallet-core';
 
 class Start extends Component {
 
@@ -26,9 +27,14 @@ class Start extends Component {
     }
 
     createClicked = () => {
-      console.log('Start : createClicked');
-      const { navigation } = this.props;
-      navigation.navigate('Create');
+
+      // create the wallet here and send the mnemonic to the next view once wallet creation succeeds
+      RNElastosMainchain.createWallet( (err, mnemonic, publicAddress) => {
+        this.setState({mnemonic: mnemonic, publicAddress: publicAddress})
+        console.log('Start : createClicked');
+        const { navigation } = this.props;
+        navigation.navigate('Create', {"mnemonic": mnemonic, "publicAddress": publicAddress});
+      });
     }
   
     render() {

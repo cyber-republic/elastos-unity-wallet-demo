@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Button,View,TextInput,Text
+    Button,View,TextInput,Text,Platform
 } from 'react-native';
 import RNElastosMainchain from 'react-native-elastos-wallet-core';
 import styles from '../import/Style';
@@ -11,7 +11,8 @@ class Import extends Component {
       super(props);
       console.log('Import : constructor');
       this.state = {
-        seedText : ''
+        seed : '',
+        pwd: ''
       }
     }
   
@@ -24,11 +25,27 @@ class Import extends Component {
     }
 
     importClicked = () => {
-      console.log('Import : importClicked');
-      const { navigation } = this.props;
-      RNElastosMainchain.importWalletWithMnemonic(this.state.seedText , (err, res) => {
-      });
-      navigation.navigate('Balance');
+
+      if (Platform.OS === 'ios'){
+        RNElastosMainchain.importWalletWithMnemonic( (err, res, publicAddress, balance, txlist) => {
+          // if successful import
+          if (res == "success"){
+            console.log('Import : importClicked');
+            const { navigation } = this.props;
+            navigation.navigate('Balance', {"publicAddress": publicAddress, "balance": balance, "txlist": txlist });
+          }
+          else {
+            console.log('Start : Error occurred while importing');
+          }
+        });
+      }
+      else {
+        console.log('Import : importClicked');
+        const { navigation } = this.props;
+        RNElastosMainchain.importWalletWithMnemonic(this.state.seedText , (err, res) => {
+        });
+        navigation.navigate('Balance');
+      }
     }
   
     render() {
@@ -43,10 +60,18 @@ class Import extends Component {
 
           <TextInput 
             style={styles.textbox} 
-            placeholder="Seed" 
+            placeholder="maximum farm someone leg music federal pyramid lounge scrap bomb skin mystery" 
             multiline
             maxLength={120}
             onChangeText={text => this.setState({ seedText: text })} >
+          </TextInput>
+
+          <TextInput 
+            style={styles.textbox} 
+            placeholder="Password" 
+            multiline
+            maxLength={120}
+            onChangeText={text => this.setState({ pwd: text })} >
           </TextInput>
 
           <Button
