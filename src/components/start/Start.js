@@ -27,14 +27,8 @@ class Start extends Component {
     }
 
     createClicked = () => {
-
-      // create the wallet here and send the mnemonic to the next view once wallet creation succeeds
-      RNElastosMainchain.createWallet( (err, mnemonic, publicAddress) => {
-        this.setState({mnemonic: mnemonic, publicAddress: publicAddress})
-        console.log('Start : createClicked');
-        const { navigation } = this.props;
-        navigation.navigate('Create', {"mnemonic": mnemonic, "publicAddress": publicAddress});
-      });
+      const { navigation } = this.props;
+      navigation.navigate('Create');
     }
   
     render() {
