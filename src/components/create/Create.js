@@ -11,14 +11,13 @@ class Create extends Component {
       super(props);
       console.log('Create : constructor');
       this.state = {
-        seedText: this.props.navigation.state.params.mnemonic
-        // seedText: 'lion cloud dragon kid easily cloth sail eject thumb town odor diamond month'
+        seedText: ''
       };
     }
   
     componentDidMount() {
       console.log('Create : componentDidMount');
-      RNElastosMainchain.generateMnemonic( (err, res) => {
+      RNElastosMainchain.GenerateMnemonic( (err, res) => {
         this.setState({seedText: res})
       });
     }
@@ -29,16 +28,20 @@ class Create extends Component {
 
     submitClicked = () => {
       console.log('Create : createClicked');
-      const { navigation } = this.props;
-      // navigation.navigate('Balance', {"publicAddress": this.props.navigation.state.params.publicAddress});
-      RNElastosMainchain.createWallet(this.state.seedText , (err, res) => {
+      RNElastosMainchain.CreateWallet(this.state.seedText , (err, res) => {
+        // if successful import
+        if (res == "success"){
+          const { navigation } = this.props;
+          navigation.navigate('Balance');
+        }
+        else {
+          console.log('Import : Error occurred while importing');
+        }
       });
-      navigation.navigate('Balance');
     }
   
     render() {
       const { seedText } = this.state;
-      console.log(seedText);
       return (
         <View style={styles.container}>
           <Text style={styles.seedTxtStyle}>

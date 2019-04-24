@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     marginBottom : 30,
     textAlign: 'center'
   },
-  elaPublicAddress : {
+  elaNewAddress : {
     marginBottom : 30,
     textAlign: 'center',
   },

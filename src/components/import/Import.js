@@ -11,8 +11,7 @@ class Import extends Component {
       super(props);
       console.log('Import : constructor');
       this.state = {
-        seed : '',
-        pwd: ''
+        seedText : ''
       }
     }
   
@@ -26,26 +25,17 @@ class Import extends Component {
 
     importClicked = () => {
 
-      if (Platform.OS === 'ios'){
-        RNElastosMainchain.importWalletWithMnemonic( (err, res, publicAddress, balance, txlist) => {
-          // if successful import
-          if (res == "success"){
-            console.log('Import : importClicked');
-            const { navigation } = this.props;
-            navigation.navigate('Balance', {"publicAddress": publicAddress, "balance": balance, "txlist": txlist });
-          }
-          else {
-            console.log('Start : Error occurred while importing');
-          }
-        });
-      }
-      else {
-        console.log('Import : importClicked');
-        const { navigation } = this.props;
-        RNElastosMainchain.importWalletWithMnemonic(this.state.seedText , (err, res) => {
-        });
-        navigation.navigate('Balance');
-      }
+      console.log('Import : importClicked');
+      RNElastosMainchain.ImportWalletWithMnemonic("cry mechanic bean they discover vendor couple adapt walk room edit dinner", (err, res) => {
+        // if successful import
+        if (res == "success"){
+          const { navigation } = this.props;
+          navigation.navigate('Balance');
+        }
+        else {
+          console.log('Import : Error occurred while importing');
+        }
+      })
     }
   
     render() {
@@ -64,14 +54,6 @@ class Import extends Component {
             multiline
             maxLength={120}
             onChangeText={text => this.setState({ seedText: text })} >
-          </TextInput>
-
-          <TextInput 
-            style={styles.textbox} 
-            placeholder="Password" 
-            multiline
-            maxLength={120}
-            onChangeText={text => this.setState({ pwd: text })} >
           </TextInput>
 
           <Button
