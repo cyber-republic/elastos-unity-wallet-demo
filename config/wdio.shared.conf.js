@@ -9,7 +9,7 @@ exports.config = {
     ],
     sync: true,
     logPath: "./",
-    logLevel: 'info',
+    logLevel: 'silent',
     deprecationWarnings: true,
     bail: 0,
     waitforTimeout: 5000,
