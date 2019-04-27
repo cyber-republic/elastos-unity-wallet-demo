@@ -14,10 +14,12 @@
     "react-navigation": "^3.0.8"
   },
   "devDependencies": {
+    "@wdio/cli": "^5.7.15",
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
-    "react-test-renderer": "16.6.0-alpha.8af6728"
+    "react-test-renderer": "16.6.0-alpha.8af6728",
+    "webdriverio": "^5.7.15"
   },
   "jest": {
     "preset": "react-native"
