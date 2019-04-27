@@ -44,11 +44,11 @@ class Start extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Button 
+          <Button testID={'btn:testBridgeButton'} 
             onPress={this.test}
             title="Test"/>
           
-          <Text>{this.state.testText}</Text>
+          <Text testID={'txt:testBridgeText'}>{this.state.testText}</Text>
           <View style={{padding:20}}></View>
 
           <Button 
