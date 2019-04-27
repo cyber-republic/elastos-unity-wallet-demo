@@ -1,118 +1,23 @@
 exports.config = {
-    //
-    // ====================
-    // Runner Configuration
-    // ====================
-    //
-    // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
-    // on a remote machine).
     runner: 'local',
-    //
-    // ==================
-    // Specify Test Files
-    // ==================
-    // Define which test specs should run. The pattern is relative to the directory
-    // from which `wdio` was called. Notice that, if you are calling `wdio` from an
-    // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
-    // directory is where your package.json resides, so `wdio` will be called from there.
-    //
+    framework: 'jasmine',
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 30000,
+    },
     specs: [
         './test/specs/**/*.js'
     ],
-    // Patterns to exclude.
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
-    //
-    // ============
-    // Capabilities
-    // ============
-    // Define your capabilities here. WebdriverIO can run multiple capabilities at the same
-    // time. Depending on the number of capabilities, WebdriverIO launches several test
-    // sessions. Within your capabilities you can overwrite the spec and exclude options in
-    // order to group specific specs to a specific capability.
-    //
-    // First, you can define how many instances should be started at the same time. Let's
-    // say you have 3 different capabilities (Chrome, Firefox, and Safari) and you have
-    // set maxInstances to 1; wdio will spawn 3 processes. Therefore, if you have 10 spec
-    // files and you set maxInstances to 10, all spec files will get tested at the same time
-    // and 30 processes will get spawned. The property handles how many capabilities
-    // from the same test should run tests.
-    //
-    // maxInstances: 10,
-    // //
-    // // If you have trouble getting all important capabilities together, check out the
-    // // Sauce Labs platform configurator - a great tool to configure your capabilities:
-    // // https://docs.saucelabs.com/reference/platforms-configurator
-    // //
-    // capabilities: [{
-    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-    //     // grid with only 5 firefox instances available you can make sure that not more than
-    //     // 5 instances get started at a time.
-    //     maxInstances: 5,
-    //     //
-    //     browserName: 'firefox',
-    //     // If outputDir is provided WebdriverIO can capture driver session logs
-    //     // it is possible to configure which logTypes to include/exclude.
-    //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-    //     // excludeDriverLogs: ['bugreport', 'server'],
-    // }],
-    //
-    // ===================
-    // Test Configurations
-    // ===================
-    // Define all options that are relevant for the WebdriverIO instance here
-    //
-    // Level of logging verbosity: trace | debug | info | warn | error | silent
+    sync: true,
+    logPath: "./",
     logLevel: 'info',
+    deprecationWarnings: true,
     bail: 0,
-    waitforTimeout: 10000,
+    waitforTimeout: 5000,
     connectionRetryTimeout: 90000,
     connectionRetryCount: 3,
-    
+    reporters: ['spec'],
     services: ['appium'],
     port: 4723,
-    capabilities: [{
-        maxInstances: 1,
-        automationName: 'XCUITest',
-        platformName: 'iOS',
-        platformVersion: '12.1',
-        deviceName: 'iPhone XR',
-        app: './ios/RNMainchainDemoArchive/RNMainchainDemo.ipa' // relative to root of project
-    }],
-
-
-    //
-    // Framework you want to run your specs with.
-    // The following are supported: Mocha, Jasmine, and Cucumber
-    // see also: https://webdriver.io/docs/frameworks.html
-    //
-    // Make sure you have the wdio adapter package for the specific framework installed
-    // before running any tests.
-    framework: 'jasmine',
-    //
-    // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
-    //
-    // Test reporter for stdout.
-    // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec'],
-    
-    //
-    // Options to be passed to Jasmine.
-    jasmineNodeOpts: {
-        //
-        // Jasmine default timeout
-        defaultTimeoutInterval: 60000,
-        //
-        // The Jasmine framework allows interception of each assertion in order to log the state of the application
-        // or website depending on the result. For example, it is pretty handy to take a screenshot every time
-        // an assertion fails.
-        expectationResultHandler: function(passed, assertion) {
-            // do something
-        }
-    },
     
     //
     // =====

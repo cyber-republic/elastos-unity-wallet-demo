@@ -14,6 +14,12 @@
     "react-navigation": "^3.9.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "@babel/traverse": "^7.4.3",
+    "@babel/types": "^7.4.0",
     "@wdio/appium-service": "^5.7.9",
     "@wdio/cli": "^5.7.15",
     "@wdio/jasmine-framework": "^5.7.13",
