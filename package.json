@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test-ios": "./node_modules/.bin/wdio config/wdio.ios.app.conf.js",
+    "test-android": "./node_modules/.bin/wdio config/wdio.android.app.conf.js"
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",

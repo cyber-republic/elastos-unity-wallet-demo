@@ -44,7 +44,8 @@ class Start extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Button testID={'btn:testBridgeButton'} 
+          <Button testID={'btn:testBridgeButton'}
+            accessibilityLabel={"testBridgeButton"}
             onPress={this.test}
             title="Test"/>
           

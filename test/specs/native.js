@@ -1,4 +1,3 @@
-
 let log;
 // var expect = require('chai').expect
 
