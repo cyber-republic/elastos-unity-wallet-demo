@@ -8,11 +8,11 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
   elaAmout : {
-    marginBottom : 30,
+    marginBottom : 10,
     textAlign: 'center'
   },
   elaNewAddress : {
-    marginBottom : 30,
+    marginBottom : 10,
     textAlign: 'center',
   },
   list: {

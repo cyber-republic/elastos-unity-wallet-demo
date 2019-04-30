@@ -28,33 +28,7 @@ class Balance extends Component {
         this.setState({newAddress: res})
       });
       RNElastosMainchain.GetAllTransaction( (err, res) => {
-        console.log(err, res)
         var transactionHistory = JSON.parse(res);
-        // var transactionData, index = 0;
-        // var transactionData = transactionHistory.map(element => {
-        //   index++;
-        //   var elementDate = new Date(element.Timestamp * 1000).toUTCString();
-        //   var elementFlag, elementAmount, elementAddress;
-        //   if (element.Incoming.Amount != 0) {
-        //     elementFlag = "Received";
-        //     elementAmount = element.Incoming.Amount;
-        //     elementAddress = element.Incoming.ToAddress;
-        //   } else {
-        //     elementFlag = "Sent";
-        //     elementAmount = element.Outcoming.Amount;
-        //     elementAddress = element.Outcoming.ToAddress;
-        //   }
-
-        //   return {
-        //       id : index,
-        //       transaction_id : element.TxHash,
-        //       amount : elementAmount,
-        //       date : elementDate,
-        //       flag : elementFlag,
-        //       address: elementAddress
-        //   }
-        // });
-        // this.setState({txlist : transactionData});
         this.setState({txlist : transactionHistory});
       });
     }
@@ -148,7 +122,7 @@ class Balance extends Component {
             <Text testID={'txt:Balance'} accessibilityLabel={"txt:Balance"} style={styles.elaAmout}>Balance : {this.state.balance} ELA</Text>
             <Text style={styles.elaNewAddress}>New Address : "{this.state.newAddress}"</Text>
             
-            <Text>{txlist}</Text>
+            {/* <Text>{txlist}</Text> */}
             {/* <FlatList
               style={styles.list}
               bounces={false}
@@ -180,89 +154,71 @@ class Balance extends Component {
               )}
             /> */}
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetBalanceInfo}
                 title="GetBalanceInfo"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.exportClicked}
                 title="Export Wallet"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.ChangePassword}
                 title="ChangePassword"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetMultiSignPubKeyWithMnemonic}
                 title="GetMultiSignPubKeyWithMnemonic"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetMultiSignPubKeyWithPrivKey}
                 title="GetMultiSignPubKeyWithPrivKey"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetPublicKey}
                 title="GetPublicKey"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetSupportedChains}
                 title="GetSupportedChains"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetAllAddress}
                 title="GetAllAddress"/>
             </View>
 
-            <TextInput 
-            style={styles.textbox} 
-            placeholder="Enter amount to send" 
-            onChangeText={text => this.setState({ sendingamount: text })} >
-              { sendingamount }
-            </TextInput>
-
-            <TextInput 
-            style={styles.textbox} 
-            placeholder="Enter receiver's address" 
-            onChangeText={text => this.setState({ toaddress: text })} >
-              { toaddress }
-            </TextInput>
-
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.IsAddressValid}
                 title="IsAddressValid"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetBalanceWithAddress}
                 title="GetBalanceWithAddress"/>
             </View>
 
-            <View style={{padding:10}}></View>
-
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.sendClicked}
                 title="SEND"/>
             </View>
-            
-            <View style={{padding:10}}></View>
         
         </View>
       );
