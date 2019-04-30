@@ -1,5 +1,5 @@
 const checkWord = require('check-word');
-const words = checkWord('en'); 
+const words = checkWord('en');
 
 const getBtnElement = async (name)=>{
   return await $(`~btn:${name}`);
@@ -13,7 +13,7 @@ const getTxtInputElement = async (name)=>{
     return await $(`~txtInput:${name}`);
 }
 
-describe('Click Create button on the First Screen', () => {
+describe('Wallet Bridge Tests', () => {
     it('calls the GenerateMnemonic bridge', async()=>{
         let btn = await getBtnElement('Create');
         await btn.click();
@@ -26,15 +26,25 @@ describe('Click Create button on the First Screen', () => {
             expect(words.check(element)).toEqual(true);
         });
     });
-});
 
-describe('Create Wallet', () => {
     it('calls the CreateWallet bridge', async()=>{
-        await getBtnElement('Create')
-        .then((elem) => elem.click())
         await getBtnElement('CreateWallet')
         .then((elem) => elem.click())
         let txtComponent = await getTxtElement('Balance');
         expect(txtComponent.error).toBeUndefined();
     });
 });
+
+// describe('Import Wallet', () => {
+//     afterEach()
+//     it('calls the ImportWalletWithMnemonic bridge', async()=>{
+//         await getBtnElement('Import')
+//         .then((elem) => elem.click())
+//         await getTxtInputElement('Mnemonic')
+//         .then((elem) => elem.setValue('cry mechanic bean they discover vendor couple adapt walk room edit dinner'))
+//         await getBtnElement('ImportWallet')
+//         .then((elem) => elem.click())
+//         let txtComponent = await getTxtElement('Balance');
+//         expect(txtComponent.error).toBeUndefined();
+//     });
+// });
