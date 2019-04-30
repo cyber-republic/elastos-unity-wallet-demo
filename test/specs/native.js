@@ -27,3 +27,14 @@ describe('Click Create button on the First Screen', () => {
         });
     });
 });
+
+describe('Create Wallet', () => {
+    it('calls the CreateWallet bridge', async()=>{
+        await getBtnElement('Create')
+        .then((elem) => elem.click())
+        await getBtnElement('CreateWallet')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Balance');
+        expect(txtComponent.error).toBeUndefined();
+    });
+});
