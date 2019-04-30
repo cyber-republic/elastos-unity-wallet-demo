@@ -145,7 +145,7 @@ class Balance extends Component {
 
       return (
         <View style={styles.container}>
-            <Text style={styles.elaAmout}>Balance : {this.state.balance} ELA</Text>
+            <Text testID={'txt:Balance'} accessibilityLabel={"txt:Balance"} style={styles.elaAmout}>Balance : {this.state.balance} ELA</Text>
             <Text style={styles.elaNewAddress}>New Address : "{this.state.newAddress}"</Text>
             
             <Text>{txlist}</Text>

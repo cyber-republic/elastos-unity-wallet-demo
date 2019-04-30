@@ -29,7 +29,7 @@ class Create extends Component {
     submitClicked = () => {
       console.log('Create : createClicked');
       RNElastosMainchain.CreateWallet(this.state.seedText , (err, res) => {
-        // if successful import
+        // if successful create
         if (res == "success"){
           const { navigation } = this.props;
           navigation.navigate('Balance');
@@ -44,10 +44,15 @@ class Create extends Component {
       const { seedText } = this.state;
       return (
         <View style={styles.container}>
-          <Text style={styles.seedTxtStyle}>
+          <Text 
+            testID={'txt:Mnemonic'}
+            accessibilityLabel={"txt:Mnemonic"}
+            style={styles.seedTxtStyle}>
             {seedText}
           </Text>
           <Button
+            testID={'btn:CreateWallet'}
+            accessibilityLabel={"btn:CreateWallet"}
             onPress={this.submitClicked}
             title="OK GOT IT"/>
         </View>
