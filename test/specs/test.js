@@ -39,7 +39,8 @@ describe('Wallet Bridge Tests', () => {
         .then((elem) => elem.click())
         let txtComponent = await getTxtElement('Result');
         let txt = await txtComponent.getText();
-        expect(txt).toBeDefined();
+        expect(txt.length).toEqual(34);
+        expect(txt[0]).toEqual("E");
     });
 
     it('calls the GetBalanceInfo bridge', async()=>{
@@ -47,7 +48,8 @@ describe('Wallet Bridge Tests', () => {
         .then((elem) => elem.click())
         let txtComponent = await getTxtElement('Result');
         let txt = await txtComponent.getText();
-        expect(txt).toBeDefined();
+        expect(txt).toContain('AssetID');
+        expect(txt).toContain('BalanceInfo');
     });
 
     it('calls the ExportWalletWithMnemonic bridge', async()=>{
@@ -75,7 +77,8 @@ describe('Wallet Bridge Tests', () => {
         .then((elem) => elem.click())
         let txtComponent = await getTxtElement('Result');
         let txt = await txtComponent.getText();
-        expect(txt).toBeDefined();
+        expect(txt.length).toEqual(66);
+        expect(txt.substr(0, 2)).toEqual('03');
     });
 
     it('calls the GetPublicKey bridge', async()=>{
@@ -83,7 +86,8 @@ describe('Wallet Bridge Tests', () => {
         .then((elem) => elem.click())
         let txtComponent = await getTxtElement('Result');
         let txt = await txtComponent.getText();
-        expect(txt).toBeDefined();
+        expect(txt.length).toEqual(66);
+        expect(txt.substr(0, 2)).toEqual('03');
     });
 
     it('calls the GetSupportedChains bridge', async()=>{

@@ -86,7 +86,7 @@ class Balance extends Component {
 
     GetMultiSignPubKeyWithPrivKey = () => {
       console.log('Balance : GetMultiSignPubKeyWithPrivKey');
-      RNElastosMainchain.GetMultiSignPubKeyWithPrivKey("xpub6DW6z9NAkjDBNUsKYEbw3xk74wv7wHa3W5arTjA9qAzov9XJFLXhXSJqmWRH319kAYKi3QdW35AseDLbyz4CS4RFU5BkwNqwuwzAAYD2stW", (err, res) => {
+      RNElastosMainchain.GetMultiSignPubKeyWithPrivKey("", (err, res) => {
         this.setState({result: res})
       });
     }
