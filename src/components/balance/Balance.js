@@ -149,7 +149,7 @@ class Balance extends Component {
 
       return (
         <View style={styles.container}>
-            <Text testID={'txt:Result'} accessibilityLabel={"txt:Result"} style={styles.result}> {this.state.result}</Text>
+            <Text testID={'txt:Result'} accessibilityLabel={"txt:Result"} style={styles.result}>{this.state.result}</Text>
 
             {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
@@ -159,6 +159,8 @@ class Balance extends Component {
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:CreateAddress'}
+                accessibilityLabel={"btn:CreateAddress"}
                 onPress={this.CreateAddress}
                 title="CreateAddress"/>
             </View>
@@ -171,24 +173,32 @@ class Balance extends Component {
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetBalanceInfo'}
+                accessibilityLabel={"btn:GetBalanceInfo"}
                 onPress={this.GetBalanceInfo}
                 title="GetBalanceInfo"/>
             </View>
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:exportClicked'}
+                accessibilityLabel={"btn:exportClicked"}
                 onPress={this.exportClicked}
                 title="Export Wallet"/>
             </View>
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:ChangePassword'}
+                accessibilityLabel={"btn:ChangePassword"}
                 onPress={this.ChangePassword}
                 title="ChangePassword"/>
             </View>
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetMultiSignPubKeyWithMnemonic'}
+                accessibilityLabel={"btn:GetMultiSignPubKeyWithMnemonic"}
                 onPress={this.GetMultiSignPubKeyWithMnemonic}
                 title="GetMultiSignPubKeyWithMnemonic"/>
             </View>
@@ -201,12 +211,16 @@ class Balance extends Component {
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetPublicKey'}
+                accessibilityLabel={"btn:GetPublicKey"}
                 onPress={this.GetPublicKey}
                 title="GetPublicKey"/>
             </View>
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetSupportedChains'}
+                accessibilityLabel={"btn:GetSupportedChains"}
                 onPress={this.GetSupportedChains}
                 title="GetSupportedChains"/>
             </View>
@@ -219,6 +233,8 @@ class Balance extends Component {
 
             <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:IsAddressValid'}
+                accessibilityLabel={"btn:IsAddressValid"}
                 onPress={this.IsAddressValid}
                 title="IsAddressValid"/>
             </View>

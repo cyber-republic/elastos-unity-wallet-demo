@@ -34,7 +34,73 @@ describe('Wallet Bridge Tests', () => {
         expect(txtComponent.error).toBeUndefined();
     });
 
-    
+    it('calls the CreateAddress bridge', async()=>{
+        await getBtnElement('CreateAddress')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toBeDefined();
+    });
+
+    it('calls the GetBalanceInfo bridge', async()=>{
+        await getBtnElement('GetBalanceInfo')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toBeDefined();
+    });
+
+    it('calls the ExportWalletWithMnemonic bridge', async()=>{
+        await getBtnElement('exportClicked')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        const mnemonics = txt.split(" ");
+        expect(mnemonics.length).toEqual(12);
+        mnemonics.forEach(element => {
+            expect(words.check(element)).toEqual(true);
+        });
+    });
+
+    it('calls the ChangePassword bridge', async()=>{
+        await getBtnElement('ChangePassword')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toEqual('success');
+    });
+
+    it('calls the GetMultiSignPubKeyWithMnemonic bridge', async()=>{
+        await getBtnElement('GetMultiSignPubKeyWithMnemonic')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toBeDefined();
+    });
+
+    it('calls the GetPublicKey bridge', async()=>{
+        await getBtnElement('GetPublicKey')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toBeDefined();
+    });
+
+    it('calls the GetSupportedChains bridge', async()=>{
+        await getBtnElement('GetSupportedChains')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toEqual('"[ELA, IdChain]"');
+    });
+
+    it('calls the IsAddressValid bridge', async()=>{
+        await getBtnElement('IsAddressValid')
+        .then((elem) => elem.click())
+        let txtComponent = await getTxtElement('Result');
+        let txt = await txtComponent.getText();
+        expect(txt).toEqual('True');
+    });
 });
 
 // describe('Import Wallet', () => {
