@@ -15,7 +15,8 @@ class Balance extends Component {
         toaddress : '',
         sendingamount : '',
         balance : '',
-        newAddress : ''
+        newAddress : '',
+        result: ''
       }
     }
   
@@ -28,33 +29,7 @@ class Balance extends Component {
         this.setState({newAddress: res})
       });
       RNElastosMainchain.GetAllTransaction( (err, res) => {
-        console.log(err, res)
         var transactionHistory = JSON.parse(res);
-        // var transactionData, index = 0;
-        // var transactionData = transactionHistory.map(element => {
-        //   index++;
-        //   var elementDate = new Date(element.Timestamp * 1000).toUTCString();
-        //   var elementFlag, elementAmount, elementAddress;
-        //   if (element.Incoming.Amount != 0) {
-        //     elementFlag = "Received";
-        //     elementAmount = element.Incoming.Amount;
-        //     elementAddress = element.Incoming.ToAddress;
-        //   } else {
-        //     elementFlag = "Sent";
-        //     elementAmount = element.Outcoming.Amount;
-        //     elementAddress = element.Outcoming.ToAddress;
-        //   }
-
-        //   return {
-        //       id : index,
-        //       transaction_id : element.TxHash,
-        //       amount : elementAmount,
-        //       date : elementDate,
-        //       flag : elementFlag,
-        //       address: elementAddress
-        //   }
-        // });
-        // this.setState({txlist : transactionData});
         this.setState({txlist : transactionHistory});
       });
     }
@@ -63,80 +38,109 @@ class Balance extends Component {
       console.log('Balance : componentWillUnmount');
     }
 
+    GetBalance = () => {
+      console.log('Balance : GetBalance');
+      RNElastosMainchain.GetBalance(0, (err, res) => {
+        // this.setState({balance: parseFloat(res / 100000000).toFixed(2)})
+        this.setState({result: parseFloat(res / 100000000).toFixed(2)})
+      });
+    }
+
+    CreateAddress = () => {
+      console.log('Balance : CreateAddress');
+      RNElastosMainchain.CreateAddress( (err, res) => {
+        // this.setState({newAddress: res})
+        this.setState({result: res})
+      });
+    }
+
+    GetAllTransaction = () => {
+      console.log('Balance : GetAllTransaction');
+      RNElastosMainchain.GetAllTransaction( (err, res) => {
+        // var transactionHistory = JSON.parse(res);
+        // this.setState({txlist : transactionHistory});
+        this.setState({result: res})
+      });
+    }
+
     sendClicked = () => {
       console.log('Balance : sendClicked');
       RNElastosMainchain.Send(this.state.sendingamount, this.state.toaddress, true, (err, res) => {
-        alert("Success, your transacionId is" + res)
+        this.setState({result: res})
       });
     }
 
     exportClicked = () => {
       console.log('Balance : exportClicked');
       RNElastosMainchain.ExportWalletWithMnemonic("elastos2018", (err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
 
     GetMultiSignPubKeyWithMnemonic = () => {
       console.log('Balance : GetMultiSignPubKeyWithMnemonic');
-      RNElastosMainchain.GetMultiSignPubKeyWithMnemonic((err, res) => {
-        alert(res)
+      RNElastosMainchain.GetMultiSignPubKeyWithMnemonic("cry mechanic bean they discover vendor couple adapt walk room edit dinner", (err, res) => {
+        this.setState({result: res})
       });
     }
 
     GetMultiSignPubKeyWithPrivKey = () => {
       console.log('Balance : GetMultiSignPubKeyWithPrivKey');
       RNElastosMainchain.GetMultiSignPubKeyWithPrivKey("", (err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
 
     GetPublicKey = () => {
       console.log('Balance : GetPublicKey');
       RNElastosMainchain.GetPublicKey((err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
 
     IsAddressValid = () => {
       console.log('Balance : IsAddressValid');
-      RNElastosMainchain.IsAddressValid(this.state.toaddress, (err, res) => {
-        alert(res)
+      RNElastosMainchain.IsAddressValid("EWzDfqRmfYKHhg2V4gPGz3jQJkZU97grow", (err, res) => {
+        if (res == true) {
+          this.setState({result: "True"})
+        } else {
+          this.setState({result: "False"})
+        }
       });
     }
 
     GetSupportedChains = () => {
       console.log('Balance : GetSupportedChains');
       RNElastosMainchain.GetSupportedChains((err, res) => {
-        alert(res)
+        this.setState({result: JSON.stringify(res)})
       });
     }
 
     ChangePassword = () => {
       console.log('Balance : ChangePassword');
-      RNElastosMainchain.ChangePassword("","", (err, res) => {
-        alert(res)
+      RNElastosMainchain.ChangePassword("elastos2018","elastos2018", (err, res) => {
+        this.setState({result: res})
       });
     }
 
     GetBalanceInfo = () => {
       console.log('Balance : GetBalanceInfo');
       RNElastosMainchain.GetBalanceInfo((err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
 
     GetBalanceWithAddress = () => {
       console.log('Balance : GetBalanceWithAddress');
       RNElastosMainchain.GetBalanceWithAddress(this.state.toaddress, (err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
 
     GetAllAddress = () => {
       console.log('Balance : GetAllAddress');
       RNElastosMainchain.GetAllAddress((err, res) => {
-        alert(res)
+        this.setState({result: res})
       });
     }
   
@@ -145,124 +149,107 @@ class Balance extends Component {
 
       return (
         <View style={styles.container}>
-            <Text style={styles.elaAmout}>Balance : {this.state.balance} ELA</Text>
-            <Text style={styles.elaNewAddress}>New Address : "{this.state.newAddress}"</Text>
-            
-            <Text>{txlist}</Text>
-            {/* <FlatList
-              style={styles.list}
-              bounces={false}
-              data={data}
-              renderItem={({ item }) => (
-                <View style={styles.item}>
-                  { Platform.OS == 'ios' ?
-                    <View>
-                    <Text>
-                    TxHash: {item.Summary.TxHash}
-                  </Text>
-                  <Text>
-                    Amout : {item.Summary.Incoming.Amount}  {'\n'}
-                    To : {item.Summary.Incoming.ToAddress}
-                    </Text>
-                    </View>
-                  :
-                  <View>
-                    <Text>
-                    {item.transaction_id}
-                  </Text>
-                  <Text>
-                    {item.flag} {item.amount} {item.date} {item.address}
-                    </Text>
-                    </View>
-                  }
-                  
-                </View>
-              )}
-            /> */}
+            <Text testID={'txt:Result'} accessibilityLabel={"txt:Result"} style={styles.result}>{this.state.result}</Text>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                onPress={this.GetBalance}
+                title="GetBalance"/>
+            </View> */}
+
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
+              <Button
+                testID={'btn:CreateAddress'}
+                accessibilityLabel={"btn:CreateAddress"}
+                onPress={this.CreateAddress}
+                title="CreateAddress"/>
+            </View>
+
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
+              <Button
+                onPress={this.GetAllTransaction}
+                title="GetAllTransaction"/>
+            </View> */}
+
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
+              <Button
+                testID={'btn:GetBalanceInfo'}
+                accessibilityLabel={"btn:GetBalanceInfo"}
                 onPress={this.GetBalanceInfo}
                 title="GetBalanceInfo"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:exportClicked'}
+                accessibilityLabel={"btn:exportClicked"}
                 onPress={this.exportClicked}
                 title="Export Wallet"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:ChangePassword'}
+                accessibilityLabel={"btn:ChangePassword"}
                 onPress={this.ChangePassword}
                 title="ChangePassword"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetMultiSignPubKeyWithMnemonic'}
+                accessibilityLabel={"btn:GetMultiSignPubKeyWithMnemonic"}
                 onPress={this.GetMultiSignPubKeyWithMnemonic}
                 title="GetMultiSignPubKeyWithMnemonic"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetMultiSignPubKeyWithPrivKey}
                 title="GetMultiSignPubKeyWithPrivKey"/>
-            </View>
+            </View> */}
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetPublicKey'}
+                accessibilityLabel={"btn:GetPublicKey"}
                 onPress={this.GetPublicKey}
                 title="GetPublicKey"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:GetSupportedChains'}
+                accessibilityLabel={"btn:GetSupportedChains"}
                 onPress={this.GetSupportedChains}
                 title="GetSupportedChains"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetAllAddress}
                 title="GetAllAddress"/>
-            </View>
+            </View> */}
 
-            <TextInput 
-            style={styles.textbox} 
-            placeholder="Enter amount to send" 
-            onChangeText={text => this.setState({ sendingamount: text })} >
-              { sendingamount }
-            </TextInput>
-
-            <TextInput 
-            style={styles.textbox} 
-            placeholder="Enter receiver's address" 
-            onChangeText={text => this.setState({ toaddress: text })} >
-              { toaddress }
-            </TextInput>
-
-            <View style={{marginLeft:100, marginRight:100}}>
+            <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
+                testID={'btn:IsAddressValid'}
+                accessibilityLabel={"btn:IsAddressValid"}
                 onPress={this.IsAddressValid}
                 title="IsAddressValid"/>
             </View>
 
-            <View style={{marginLeft:100, marginRight:100}}>
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.GetBalanceWithAddress}
                 title="GetBalanceWithAddress"/>
-            </View>
+            </View> */}
 
-            <View style={{padding:10}}></View>
-
-            <View style={{marginLeft:100, marginRight:100}}>
+            {/* <View style={{marginLeft:100, marginRight:100, marginBottom:10}}>
               <Button
                 onPress={this.sendClicked}
                 title="SEND"/>
-            </View>
-            
-            <View style={{padding:10}}></View>
+            </View> */}
         
         </View>
       );

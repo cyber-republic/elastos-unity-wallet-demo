@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test-ios": "./node_modules/.bin/wdio config/wdio.ios.app.conf.js",
+    "test-android": "./node_modules/.bin/wdio config/wdio.android.app.conf.js"
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
@@ -29,6 +30,7 @@
     "appium": "^1.12.1",
     "babel-jest": "23.6.0",
     "chai": "^4.2.0",
+    "check-word": "^1.1.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
     "react-test-renderer": "16.6.0-alpha.8af6728",

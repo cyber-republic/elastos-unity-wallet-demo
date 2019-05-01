@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Button,View, Text
+    Button,View
 } from 'react-native';
 import styles from '../start/Style';
-import RNElastosMainchain from 'react-native-elastos-wallet-core';
 
 class Start extends Component {
 
@@ -35,29 +34,20 @@ class Start extends Component {
     navigation.navigate('Create');
   }
 
-  test = () => {
-    RNElastosMainchain.test( (err, res) => {
-      this.setState({testText: res})
-    });
-  }
-
   render() {
     return (
       <View style={styles.container}>
-          <Button testID={'btn:testBridgeButton'} 
-            onPress={this.test}
-            title="Test"/>
-          
-          <Text testID={'txt:testBridgeText'}>{this.state.testText}</Text>
-          <View style={{padding:20}}></View>
-
           <Button 
+            testID={'btn:Create'}
+            accessibilityLabel={"btn:Create"}
             onPress={this.createClicked}
             title="Create"/>
           
           <View style={{padding:20}}></View>
 
           <Button
+            testID={'btn:Import'}
+            accessibilityLabel={"btn:Import"}
             onPress={this.importClicked}
             title="Import"/>
       </View>

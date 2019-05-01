@@ -48,7 +48,9 @@ class Import extends Component {
             Enter your 12 words seed here
           </Text>
 
-          <TextInput 
+          <TextInput
+            testID={'txtInput:Mnemonic'}
+            accessibilityLabel={"txtInput:Mnemonic"} 
             style={styles.textbox} 
             placeholder="maximum farm someone leg music federal pyramid lounge scrap bomb skin mystery" 
             multiline
@@ -57,6 +59,8 @@ class Import extends Component {
           </TextInput>
 
           <Button
+            testID={'btn:ImportWallet'}
+            accessibilityLabel={"btn:ImportWallet"}
             style={[styles.importButton]} 
             onPress={this.importClicked}
             title="Import"/>

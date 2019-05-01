@@ -2,7 +2,7 @@ exports.config = {
     runner: 'local',
     framework: 'jasmine',
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 30000,
+        defaultTimeoutInterval: 60000,
     },
     specs: [
         './test/specs/**/*.js'
