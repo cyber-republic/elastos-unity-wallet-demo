@@ -40,7 +40,12 @@ const styles = StyleSheet.create({
     flex : 1,
     flexDirection: 'column',
     marginBottom : 10
-  }
+  },
+
+  result : {
+    marginBottom : 10,
+    textAlign: 'center'
+  },
 });
 
 export default styles;

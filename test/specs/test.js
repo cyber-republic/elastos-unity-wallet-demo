@@ -30,9 +30,11 @@ describe('Wallet Bridge Tests', () => {
     it('calls the CreateWallet bridge', async()=>{
         await getBtnElement('CreateWallet')
         .then((elem) => elem.click())
-        let txtComponent = await getTxtElement('Balance');
+        let txtComponent = await getTxtElement('Result');
         expect(txtComponent.error).toBeUndefined();
     });
+
+    
 });
 
 // describe('Import Wallet', () => {
@@ -44,7 +46,7 @@ describe('Wallet Bridge Tests', () => {
 //         .then((elem) => elem.setValue('cry mechanic bean they discover vendor couple adapt walk room edit dinner'))
 //         await getBtnElement('ImportWallet')
 //         .then((elem) => elem.click())
-//         let txtComponent = await getTxtElement('Balance');
+//         let txtComponent = await getTxtElement('Result');
 //         expect(txtComponent.error).toBeUndefined();
 //     });
 // });
