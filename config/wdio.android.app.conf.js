@@ -1,4 +1,3 @@
-const { join } = require('path');
 const { config } = require('./wdio.shared.conf');
 
 // ============
