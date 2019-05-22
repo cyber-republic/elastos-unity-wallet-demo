@@ -1,12 +1,12 @@
-# react-native-elastos-mainchain-demo
+# elastos-unity-wallet-demo
 
-This is a demo app using the react-native-elastos-wallet-core npm package.
+This is a demo app using the elastos-unity-wallet.
 
 ## How to use for ios
 
 ```
-$ git clone https://github.com/cyber-republic/react-native-elastos-wallet-core-demo
-$ cd react-native-elastos-wallet-core-demo
+$ git clone https://github.com/cyber-republic/elastos-unity-wallet-demo
+$ cd elastos-unity-wallet-demo
 $ npm i
 $ react-native start
 $ react-native run-ios
@@ -15,10 +15,8 @@ $ react-native run-ios
 ## How to use for android
 
 ```
-$ git clone https://github.com/cyber-republic/react-native-elastos-wallet-core-demo
-$ cd react-native-elastos-wallet-core-demo
+$ git clone https://github.com/cyber-republic/elastos-unity-wallet-demo
+$ cd elastos-unity-wallet-demo
 $ npm i
 $ react-native run-android
 ```
-
-<img src="https://ademcan.net/images/ElaWalletGenerateMnemonic.png" width="400">

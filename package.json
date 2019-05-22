@@ -10,7 +10,7 @@
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
-    "react-native-elastos-wallet-core": "github:cyber-republic/react-native-elastos-wallet-core",
+    "react-native-elastos-wallet-core": "github:cyber-republic/elastos-unity-wallet",
     "react-native-gesture-handler": "^1.1.0",
     "react-navigation": "^3.9.1"
   },
